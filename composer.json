@@ -1,0 +1,27 @@
+{
+    "name": "dhl/module-carrier-update",
+    "version": "1.0.0",
+    "type": "magento2-module",
+    "description": "Optional component to assign incoming orders to the DHL Paket carrier.",
+    "license": "OSL-3.0",
+    "authors": [
+        {
+            "email": "plugins@netresearch.de",
+            "name": "Netresearch DTT GmbH",
+            "role": "Manufacturer",
+            "homepage": "https://www.netresearch.de/"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Dhl\\Paket\\CarrierUpdate\\": ""
+        },
+        "files": [
+            "registration.php"
+        ]
+    },
+    "require": {
+        "php": "^7.1.3",
+        "dhl/module-carrier-paket": "^2.0.0"
+    }
+}
