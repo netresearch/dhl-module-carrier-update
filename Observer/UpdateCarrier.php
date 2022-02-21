@@ -1,7 +1,12 @@
 <?php
 
+/**
+ * See LICENSE.md for license details.
+ */
+
 namespace Dhl\Paket\Observer;
 
+use Dhl\Paket\Api\UpdateConditionInterface;
 use Dhl\Paket\Model\Carrier\Paket;
 use Magento\Framework\Event\Observer;
 use Magento\Framework\Event\ObserverInterface;
@@ -9,13 +14,13 @@ use Magento\Framework\Event\ObserverInterface;
 class UpdateCarrier implements ObserverInterface
 {
     /**
-     * @var ModuleConfigInterface
+     * @var UpdateConditionInterface
      */
-    private $config;
+    private $condition;
 
-    public function __construct(ModuleConfigInterface $config)
+    public function __construct(UpdateConditionInterface $condition)
     {
-        $this->config = $config;
+        $this->condition = $condition;
     }
 
     /**
@@ -31,17 +36,26 @@ class UpdateCarrier implements ObserverInterface
         /** @var \Magento\Sales\Api\Data\OrderInterface|\Magento\Sales\Model\Order $order */
         $order = $observer->getEvent()->getData('order');
         if ($order->getIsVirtual()) {
+            // virtual orders cannot be shipped.
             return;
         }
 
         $shippingMethod = $order->getShippingMethod();
-        $recipientCountry = $order->getShippingAddress()->getCountryId();
-
-        if ($this->config->canProcessShipping($shippingMethod, $recipientCountry, $order->getStoreId())) {
-            $parts          = explode('_', $shippingMethod);
-            $parts[0]       = Paket::CARRIER_CODE;
-            $shippingMethod = implode('_', $parts);
-            $order->setData('shipping_method', $shippingMethod);
+        if (strpos($shippingMethod, Paket::CARRIER_CODE) === 0) {
+            // order is already assigned to DHL Paket.
+            return;
         }
+
+        if (!$this->condition->canUpdate($order)) {
+            // any further condition(s) prevent the order from being updated.
+            return;
+        }
+
+
+        $parts = explode('_', $shippingMethod);
+        $parts[0] = Paket::CARRIER_CODE;
+        $shippingMethod = implode('_', $parts);
+
+        $order->setData('shipping_method', $shippingMethod);
     }
 }

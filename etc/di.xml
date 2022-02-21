@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * See LICENSE.md for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <!-- # virtual types -->
+    <virtualType name="Dhl\Paket\Model\UpdateCondition\Virtual" type="Dhl\Paket\Model\UpdateCondition\Composite">
+        <arguments>
+            <argument name="conditions" xsi:type="array">
+                <item name="shippingOrigin" xsi:type="object">Dhl\Paket\Model\UpdateCondition\ShippingOrigin</item>
+                <item name="configuration" xsi:type="object">Dhl\Paket\Model\UpdateCondition\MethodConfiguration</item>
+            </argument>
+        </arguments>
+    </virtualType>
+
+    <!-- # argument di overrides -->
+    <type name="Dhl\Paket\Observer\UpdateCarrier">
+        <arguments>
+            <argument name="condition" xsi:type="object">Dhl\Paket\Model\UpdateCondition\Virtual</argument>
+        </arguments>
+    </type>
+</config>
