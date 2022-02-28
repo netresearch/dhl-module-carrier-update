@@ -19,10 +19,14 @@ as implemented in the legacy module: The admin user can select a list of
 offline shipping methods in the module configuration.
 
 ```
-Stores → Configuration → Sales → Post & DHL Shipping → DHL Parcel Germany → Checkout Presentation → Shipping Methods for DHL Paket
+Stores → Configuration → Sales → Post & DHL Shipping → DHL Parcel Germany → Checkout Presentation → Additional Shipping Methods for DHL Paket
 ```
+Please note that the DHL service box in checkout will not be displayed for these additional shipping methods.  
 
-When an order is placed with one of these methods, then the DHL Paket carrier
+The special methods "DHL Paket" and "DHL Paket Returns" can be ignored in the box
+"Shipping Methods for DHL Paket".
+
+When an order is placed with one of the selected methods, then the DHL Paket carrier
 gets assigned to the order and further shipping fulfillment will be done with
 the DHL Business Customer Shipping API. This solution was suggested in the
 [issue discussion](https://github.com/netresearch/dhl-shipping-m2/issues/11#issuecomment-800547526).

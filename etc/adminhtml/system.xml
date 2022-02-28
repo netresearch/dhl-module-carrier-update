@@ -11,7 +11,7 @@
                 <group id="checkout_settings">
                     <!-- Shipping Methods for DHL Shipping -->
                     <field id="methods_additional" translate="label tooltip comment" type="multiselect" sortOrder="35" showInDefault="1" showInWebsite="1" showInStore="0">
-                        <label>Shipping Methods for DHL Paket</label>
+                        <label>Additional Shipping Methods for DHL Paket</label>
                         <source_model>Magento\Shipping\Model\Config\Source\Allmethods</source_model>
                         <comment>Selected shipping methods will be processed with DHL Paket.</comment>
                     </field>
