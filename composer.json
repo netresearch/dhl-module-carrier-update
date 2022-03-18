@@ -1,6 +1,6 @@
 {
     "name": "dhl/module-carrier-update",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "type": "magento2-module",
     "description": "Optional component to assign incoming orders to the DHL Paket carrier.",
     "license": "OSL-3.0",

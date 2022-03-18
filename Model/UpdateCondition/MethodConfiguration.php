@@ -32,7 +32,7 @@ class MethodConfiguration implements UpdateConditionInterface
 
     public function canUpdate(OrderInterface $order): bool
     {
-        $configuredMethods = $this->scopeConfig->getValue(
+        $configuredMethods = (string) $this->scopeConfig->getValue(
             self::CONFIG_PATH_ADDITIONAL_METHODS,
             ScopeInterface::SCOPE_STORE,
             $order->getStoreId()
