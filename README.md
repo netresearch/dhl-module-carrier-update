@@ -41,7 +41,7 @@ placed in a certain store must be reassigned.
 
 Requirements
 ------------
-* PHP >= 7.1.3
+* PHP >= 7.2
 
 Compatibility
 -------------
