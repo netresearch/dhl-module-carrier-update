@@ -19,8 +19,7 @@
             "Dhl\\Paket\\Observer\\": "Observer/"
         },
         "files": [
-            "registration.php",
-	    "Api/UpdateConditionInterface.php" 
+            "registration.php"
         ]
     },
     "require": {
