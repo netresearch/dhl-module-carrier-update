@@ -1,6 +1,6 @@
 {
     "name": "dhl/module-carrier-update",
-    "version": "1.1.0",
+    "version": "1.2.0",
     "type": "magento2-module",
     "description": "Optional component to assign incoming orders to the DHL Paket carrier.",
     "license": "OSL-3.0",
@@ -14,22 +14,25 @@
     ],
     "autoload": {
         "psr-4": {
-            "Dhl\\Paket\\": ""
+            "Dhl\\Paket\\Api\\": "Api/",
+            "Dhl\\Paket\\Model\\": "Model/",
+            "Dhl\\Paket\\Observer\\": "Observer/"
         },
         "files": [
-            "registration.php"
+            "registration.php",
+	    "Api/UpdateConditionInterface.php" 
         ]
     },
     "require": {
-        "php": "^7.2.0 || ^8.1.0",
-        "dhl/module-carrier-paket": "^2.0.0",
+        "php": "^7.2.0 || ^8.1.0 || ^8.2.0",
+        "dhl/module-carrier-paket": "^2.0.0 || ^3.0.0",
         "dhl/module-shipping-core": "^2.0.0",
         "magento/framework": "^102.0.0 || ^103.0.0",
         "magento/module-config": "^101.1.0",
         "magento/module-sales": "^102.0.0 || ^103.0.0",
         "magento/module-shipping": "^100.3.0",
         "magento/module-store": "^101.0.0",
-        "netresearch/module-shipping-core": "^2.0.0"
+        "netresearch/module-shipping-core": "^3.0.0"
     },
     "extra": {
         "branch-alias": {

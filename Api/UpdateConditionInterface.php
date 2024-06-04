@@ -6,7 +6,7 @@
 
 declare(strict_types=1);
 
-namespace Dhl\Paket\Api;
+namespace Dhl\Paket\Api\;
 
 use Magento\Sales\Api\Data\OrderInterface;
 

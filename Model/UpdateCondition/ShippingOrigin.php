@@ -6,7 +6,7 @@
 
 declare(strict_types=1);
 
-namespace Dhl\Paket\Model\UpdateCondition;
+namespace Dhl\Paket\Model\UpdateCondition\;
 
 use Dhl\Paket\Api\UpdateConditionInterface;
 use Magento\Sales\Api\Data\OrderInterface;
