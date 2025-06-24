@@ -31,6 +31,7 @@ class UpdateCarrier implements ObserverInterface
      *
      * @param Observer $observer
      */
+    #[\Override]
     public function execute(Observer $observer): void
     {
         /** @var \Magento\Sales\Api\Data\OrderInterface|\Magento\Sales\Model\Order $order */
@@ -41,7 +42,7 @@ class UpdateCarrier implements ObserverInterface
         }
 
         $shippingMethod = $order->getShippingMethod();
-        if (strpos($shippingMethod, Paket::CARRIER_CODE) === 0) {
+        if (str_starts_with((string) $shippingMethod, Paket::CARRIER_CODE)) {
             // order is already assigned to DHL Paket.
             return;
         }
@@ -52,7 +53,7 @@ class UpdateCarrier implements ObserverInterface
         }
 
 
-        $parts = explode('_', $shippingMethod);
+        $parts = explode('_', (string) $shippingMethod);
         $parts[0] = Paket::CARRIER_CODE;
         $shippingMethod = implode('_', $parts);
 

@@ -27,6 +27,7 @@ class ShippingOrigin implements UpdateConditionInterface
         $this->shippingConfig = $shippingConfig;
     }
 
+    #[\Override]
     public function canUpdate(OrderInterface $order): bool
     {
         return ('DE' === $this->shippingConfig->getOriginCountry($order->getStoreId()));

@@ -30,6 +30,7 @@ class MethodConfiguration implements UpdateConditionInterface
         $this->scopeConfig = $scopeConfig;
     }
 
+    #[\Override]
     public function canUpdate(OrderInterface $order): bool
     {
         $configuredMethods = (string) $this->scopeConfig->getValue(
@@ -42,7 +43,7 @@ class MethodConfiguration implements UpdateConditionInterface
         $shippingMethod = $order->getShippingMethod();
 
         foreach ($configuredMethods as $configuredMethod) {
-            if (strpos($shippingMethod, $configuredMethod) === 0) {
+            if (str_starts_with($shippingMethod, $configuredMethod)) {
                 return true;
             }
         }

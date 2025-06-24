@@ -23,6 +23,7 @@ class Composite implements UpdateConditionInterface
         $this->conditions = $conditions;
     }
 
+    #[\Override]
     public function canUpdate(OrderInterface $order): bool
     {
         foreach ($this->conditions as $condition) {
